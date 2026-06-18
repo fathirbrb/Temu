@@ -43,7 +43,7 @@ Pastikan Anda sudah menginstal:
 ### 2. Clone Repository
 Unduh repository ini menggunakan terminal/git bash:
 ```bash
-git clone https://github.com/username/temu.git
+git clone https://github.com/fathirbrb/temu.git
 cd temu
 ```
 
