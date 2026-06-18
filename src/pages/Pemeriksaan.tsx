@@ -322,7 +322,7 @@ export default function Pemeriksaan() {
               <p>NIP. ........................................</p>
             </div>
             <div className="signature-box">
-              <p>Yogyakarta, {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <p>Bandar Jaya, {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
               <p>Kader Posyandu Lansia</p>
               <div className="signature-space"></div>
               <p className="signature-name">................................................</p>
