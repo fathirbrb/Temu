@@ -38,7 +38,7 @@ export const dashboardService = {
   async getRecentPemeriksaan(limit: number = 5): Promise<Pemeriksaan[]> {
     const { data, error } = await supabase
       .from('pemeriksaan')
-      .select('*, lansia(nama)')
+      .select('*, lansia(nama, no_hp_keluarga)')
       .order('tanggal_pemeriksaan', { ascending: false })
       .limit(limit);
 

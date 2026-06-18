@@ -148,6 +148,42 @@ export default function Pemeriksaan() {
     }
   };
 
+  const handleSendWA = (p: Pemeriksaan) => {
+    const lansia = p.lansia;
+    if (!lansia) return;
+    
+    const noHpKeluarga = lansia.no_hp_keluarga;
+    if (!noHpKeluarga) {
+      alert(`Nomor HP keluarga lansia "${lansia.nama}" belum didaftarkan di biodata.`);
+      return;
+    }
+
+    let formattedPhone = noHpKeluarga.replace(/[^0-9]/g, '');
+    if (formattedPhone.startsWith('0')) {
+      formattedPhone = '62' + formattedPhone.slice(1);
+    }
+
+    const formattedDate = formatDate(p.tanggal_pemeriksaan);
+    const emojiStatus = p.status === 'normal' ? '🟢' : p.status === 'waspada' ? '🟡' : '🔴';
+
+    const pesan = `Halo Bapak/Ibu, berikut laporan hasil pemeriksaan kesehatan rutin untuk orang tua kita:
+
+*Nama:* ${lansia.nama}
+*Tanggal Pemeriksaan:* ${formattedDate}
+*Tekanan Darah:* ${p.tekanan_darah} mmHg
+*Berat Badan:* ${p.berat_badan || '-'} kg
+*Tinggi Badan:* ${p.tinggi_badan || '-'} cm
+*Gula Darah:* ${p.gula_darah || '-'} mg/dL
+*Kolesterol:* ${p.kolesterol || '-'} mg/dL
+*Status Kesehatan:* ${p.status.toUpperCase()} ${emojiStatus}
+*Catatan:* ${p.catatan || 'Kondisi terpantau baik, tetap jaga pola hidup sehat.'}
+
+*TEMU (Tetap Dekat Meski Berjauhan)*`;
+
+    const url = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+  };
+
   const formatDate = (dateStr: string) => {
     try {
       const date = new Date(dateStr);
@@ -288,6 +324,16 @@ export default function Pemeriksaan() {
                     </td>
                     <td>
                       <div className="actions-cell">
+                        <button
+                          onClick={() => handleSendWA(p)}
+                          className="btn btn-whatsapp btn-small"
+                          title="Kirim WA ke Keluarga"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '2px' }}>
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                          </svg>
+                          Kirim WA
+                        </button>
                         <button
                           onClick={() => openEditModal(p)}
                           className="btn btn-outline btn-small"

@@ -6,7 +6,7 @@ export const pemeriksaanService = {
   async getAllPemeriksaan(): Promise<Pemeriksaan[]> {
     const { data, error } = await supabase
       .from('pemeriksaan')
-      .select('*, lansia(nama)')
+      .select('*, lansia(nama, no_hp_keluarga)')
       .order('tanggal_pemeriksaan', { ascending: false });
 
     if (error) {
@@ -18,7 +18,7 @@ export const pemeriksaanService = {
   async getPemeriksaanById(id: string): Promise<Pemeriksaan> {
     const { data, error } = await supabase
       .from('pemeriksaan')
-      .select('*, lansia(nama)')
+      .select('*, lansia(nama, no_hp_keluarga)')
       .eq('id', id)
       .maybeSingle();
 

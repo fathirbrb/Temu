@@ -1095,3 +1095,20 @@ body {
     text-decoration: underline;
   }
 }
+
+/* WhatsApp Button */
+.btn-whatsapp {
+  background-color: #25D366 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.btn-whatsapp:hover:not(:disabled) {
+  background-color: #128C7E !important;
+}
+
+@media print {
+  .btn-whatsapp {
+    display: none !important;
+  }
+}

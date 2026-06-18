@@ -34,5 +34,6 @@ export interface Pemeriksaan {
   created_at?: string;
   lansia?: {
     nama: string;
+    no_hp_keluarga: string | null;
   } | null;
 }
