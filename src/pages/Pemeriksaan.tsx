@@ -171,23 +171,45 @@ export default function Pemeriksaan() {
 
   return (
     <div>
+      {/* Print-only Header */}
+      <div className="print-only print-header">
+        <h1 className="print-title">Laporan Bulanan Pemeriksaan Kesehatan Lansia</h1>
+        <p className="print-subtitle">Posyandu TEMU (Tetap Dekat Meski Berjauhan) — Tanggal Cetak: {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+      </div>
+
       <div className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
           <h1 className="dashboard-title">Pemeriksaan Kesehatan</h1>
           <p className="dashboard-subtitle">Kelola dan pantau riwayat pemeriksaan kesehatan lansia</p>
         </div>
-        <button
-          onClick={openCreateModal}
-          className="btn btn-primary"
-          style={{ width: 'auto' }}
-          disabled={lansiaList.length === 0}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
-          </svg>
-          Tambah Pemeriksaan
-        </button>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <button
+            onClick={() => window.print()}
+            className="btn btn-outline"
+            style={{ width: 'auto' }}
+            disabled={pemeriksaanList.length === 0}
+            title="Cetak Laporan"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}>
+              <polyline points="6 9 6 2 18 2 18 9" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <rect x="6" y="14" width="12" height="8" />
+            </svg>
+            Cetak Laporan
+          </button>
+          <button
+            onClick={openCreateModal}
+            className="btn btn-primary"
+            style={{ width: 'auto' }}
+            disabled={lansiaList.length === 0}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Tambah Pemeriksaan
+          </button>
+        </div>
       </div>
 
       {lansiaList.length === 0 && !loading && (
@@ -288,6 +310,24 @@ export default function Pemeriksaan() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Print-only Footer Signatures */}
+          <div className="print-only print-footer">
+            <div className="signature-box">
+              <p>Mengetahui,</p>
+              <p>Tenaga Kesehatan Puskesmas</p>
+              <div className="signature-space"></div>
+              <p className="signature-name">................................................</p>
+              <p>NIP. ........................................</p>
+            </div>
+            <div className="signature-box">
+              <p>Yogyakarta, {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <p>Kader Posyandu Lansia</p>
+              <div className="signature-space"></div>
+              <p className="signature-name">................................................</p>
+              <p>Nama Lengkap Kader</p>
+            </div>
           </div>
         </div>
       )}

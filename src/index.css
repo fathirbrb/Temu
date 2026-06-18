@@ -962,3 +962,136 @@ body {
   color: var(--text);
   line-height: 1.5;
 }
+
+/* Print Layout Helper */
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 1.5cm;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12px !important;
+  }
+
+  /* Hide screen-only widgets */
+  .main-header,
+  .main-sidebar,
+  .bottom-nav,
+  .btn,
+  .action-bar,
+  .search-wrapper,
+  .actions-cell,
+  th:last-child,
+  td:last-child {
+    display: none !important;
+  }
+
+  /* Adjust containers */
+  .app-container,
+  .layout-body,
+  .main-content,
+  .content-container,
+  .section-card {
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-header {
+    text-align: center;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+
+  .print-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .print-subtitle {
+    font-size: 12px;
+    margin: 0;
+    color: #475569;
+  }
+
+  /* Optimize table for print */
+  .table-responsive {
+    border: 1px solid #000000 !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  .pemeriksaan-table {
+    font-size: 11px !important;
+  }
+
+  .pemeriksaan-table th {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+    font-weight: 700 !important;
+    padding: 10px 8px !important;
+  }
+
+  .pemeriksaan-table td {
+    border-bottom: 1px solid #e2e8f0 !important;
+    color: #000000 !important;
+    padding: 8px 8px !important;
+  }
+
+  .pemeriksaan-table tr {
+    page-break-inside: avoid;
+  }
+
+  /* Keep status badge styled but readable */
+  .status-badge {
+    border: 1px solid #000000 !important;
+    background-color: transparent !important;
+    color: #000000 !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    font-size: 10px !important;
+  }
+
+  /* Print signatures at bottom */
+  .print-footer {
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 48px;
+    page-break-inside: avoid;
+  }
+
+  .signature-box {
+    text-align: center;
+    width: 200px;
+  }
+
+  .signature-space {
+    height: 70px;
+  }
+
+  .signature-name {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+}
