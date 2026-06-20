@@ -34,7 +34,7 @@
   box-sizing: inherit;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -46,6 +46,8 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #root {
@@ -467,6 +469,7 @@ body {
 .layout-body {
   display: flex;
   flex: 1;
+  min-width: 0;
 }
 
 .main-sidebar {
@@ -537,6 +540,7 @@ body {
 .main-content {
   flex: 1;
   padding: 40px 32px;
+  min-width: 0;
 }
 
 .content-container {
