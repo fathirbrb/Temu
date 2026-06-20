@@ -1618,3 +1618,53 @@ body {
 .dropdown-item.logout:hover svg {
   color: var(--error);
 }
+
+/* Mobile Responsive Overrides */
+@media (max-width: 768px) {
+  .main-header {
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1.5px solid var(--border) !important;
+    padding: 12px 16px !important;
+    box-shadow: 0 4px 30px rgba(31, 42, 39, 0.03) !important;
+  }
+  
+  .profile-trigger-name {
+    display: none !important;
+  }
+  
+  .profile-trigger-btn .chevron-icon {
+    display: none !important;
+  }
+  
+  .profile-trigger-btn {
+    padding: 4px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-backdrop {
+    padding: 12px !important;
+  }
+  
+  .modal-card {
+    border-radius: 20px !important;
+    max-height: 94vh !important;
+  }
+  
+  .modal-header {
+    padding: 16px 20px !important;
+  }
+  
+  .modal-body {
+    padding: 20px !important;
+  }
+  
+  .modal-footer {
+    padding: 16px 20px !important;
+  }
+}
