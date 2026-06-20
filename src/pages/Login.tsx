@@ -81,61 +81,74 @@ export default function Login() {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-header">
-          <img src="/logo.png" alt="Logo TEMU" className="auth-logo-img" />
-          <h1 className="auth-logo">TEMU</h1>
-          <p className="auth-tagline">Tetap Dekat Meski Berjauhan</p>
+      {/* Left Panel: Form */}
+      <div className="auth-form-panel">
+        <div className="auth-form-content">
+          <div className="auth-header">
+            <img src="/logo.png" alt="Logo TEMU" className="auth-logo-img" />
+            <h1 className="auth-logo">TEMU</h1>
+            <p className="auth-tagline">Tetap Dekat Meski Berjauhan</p>
+          </div>
+
+          <h2 className="auth-title">Masuk ke Akun Anda</h2>
+
+          {error && <div className="alert-error">{error}</div>}
+
+          <form onSubmit={handleLogin}>
+            <div className="form-group">
+              <label className="form-label" htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                className="form-input"
+                placeholder="nama@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={loading}
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label" htmlFor="password">Kata Sandi</label>
+              <input
+                id="password"
+                type="password"
+                className="form-input"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={loading}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <div className="spinner" />
+                  <span>Memproses...</span>
+                </>
+              ) : (
+                'Masuk'
+              )}
+            </button>
+          </form>
         </div>
+      </div>
 
-        <h2 className="auth-title">Masuk ke Akun Anda</h2>
-
-        {error && <div className="alert-error">{error}</div>}
-
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label className="form-label" htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              className="form-input"
-              placeholder="nama@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <div className="form-group">
-            <label className="form-label" htmlFor="password">Kata Sandi</label>
-            <input
-              id="password"
-              type="password"
-              className="form-input"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={loading}
-          >
-            {loading ? (
-              <>
-                <div className="spinner" />
-                <span>Memproses...</span>
-              </>
-            ) : (
-              'Masuk'
-            )}
-          </button>
-        </form>
+      {/* Right Panel: Image Display */}
+      <div className="auth-image-panel">
+        <div className="auth-image-overlay">
+          <h2 className="auth-image-title">Tetap Dekat Meski Berjauhan</h2>
+          <p className="auth-image-desc">
+            Platform digital Posyandu Lansia untuk memantau perkembangan kesehatan orang tua tercinta secara real-time dan terintegrasi.
+          </p>
+        </div>
       </div>
     </div>
   );
