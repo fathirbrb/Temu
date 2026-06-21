@@ -46,8 +46,6 @@ html, body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 #root {
@@ -541,6 +539,7 @@ html, body {
   flex: 1;
   padding: 40px 32px;
   min-width: 0;
+  overflow-x: hidden;
 }
 
 .content-container {
