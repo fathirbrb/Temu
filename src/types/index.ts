@@ -1,7 +1,7 @@
 export interface Profile {
   id: string;
   nama: string;
-  role: 'admin' | 'kader' | 'tenaga_kesehatan' | 'keluarga';
+  role: 'admin' | 'kader' | 'keluarga';
   no_hp: string | null;
   created_at: string;
 }

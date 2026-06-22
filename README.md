@@ -6,7 +6,7 @@
 1. **Autentikasi & Verifikasi Peran (Role-Based Access Control):**
    - Pengguna masuk menggunakan Supabase Auth.
    - Pengecekan profil otomatis di tabel database `profiles`. Jika tidak terdaftar, akses ditolak (`/unauthorized`) untuk keamanan data pasien.
-   - Mendukung multi-role: `admin`, `kader`, `tenaga_kesehatan`, dan `keluarga`.
+   - Mendukung multi-role: `admin`, `kader`, dan `keluarga`.
 2. **Dashboard Pemantauan Real-time (`/`):**
    - Menampilkan total lansia terdaftar dan total pemeriksaan.
    - Rekap otomatis jumlah lansia dengan kondisi **Normal**, **Waspada**, dan **Bahaya**.

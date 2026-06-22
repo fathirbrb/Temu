@@ -432,11 +432,6 @@ html, body {
   color: #2F80ED;
 }
 
-.user-role-badge[data-role="tenaga_kesehatan"] {
-  background-color: #EDF7F2;
-  color: #27AE60;
-}
-
 .user-role-badge[data-role="keluarga"] {
   background-color: #FEF7EE;
   color: #D37A20;
